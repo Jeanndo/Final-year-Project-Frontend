@@ -12,7 +12,7 @@ import Hidden from "@material-ui/core/Hidden"
 const useStyles = makeStyles({
   card: {
     display: "flex",
-    height: "50vh",
+    height: "30vh",
   },
   cardDetails: {
     flex: 1,
@@ -27,7 +27,7 @@ export default function FeaturedPost(props) {
   const { post } = props
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} md={6} style={{ padding: "30px" }}>
       <CardActionArea component="a" href="#">
         <Card className={classes.card}>
           <div className={classes.cardDetails}>

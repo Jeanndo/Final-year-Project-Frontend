@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import classes from "./FileForm.module.css"
 import ResultTable from "./ResultTables"
+import Navigation from "./Navigator"
 
 const FileForm = () => {
   const [selectFile, setSelectFile] = useState(null)
@@ -32,6 +33,7 @@ const FileForm = () => {
 
   return (
     <React.Fragment>
+      <Navigation />
       <div className={classes.main}>
         <h3 className={classes.UploadingTitle}>Batch processing</h3>
         <form onSubmit={UploadHandler} className={classes.FormContainer}>

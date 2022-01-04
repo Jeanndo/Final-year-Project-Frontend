@@ -3,16 +3,9 @@ import PropTypes from "prop-types"
 import { makeStyles } from "@material-ui/core/styles"
 import Paper from "@material-ui/core/Paper"
 import Grid from "@material-ui/core/Grid"
+import "./landing.css"
 
 const useStyles = makeStyles((theme) => ({
-  mainFeaturedPost: {
-    position: "relative",
-    backgroundColor: theme.palette.grey[800],
-    color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
-    marginLeft: "52px",
-    width: "100%",
-  },
   overlay: {
     position: "absolute",
     top: 0,
@@ -27,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
       padding: theme.spacing(6),
       paddingRight: 0,
     },
-    height: "60vh",
+    height: "55vh",
     width: "100%",
     marginTop: "50px",
     marginBottom: "30px",
@@ -39,10 +32,7 @@ export default function MainFeaturedPost(props) {
   const { post } = props
 
   return (
-    <Paper
-      className={classes.mainFeaturedPost}
-      style={{ backgroundImage: `url(${post.image})` }}
-    >
+    <Paper className="BackgroundImage" style={{ marginTop: "100px" }}>
       {
         <img
           style={{ display: "none" }}
