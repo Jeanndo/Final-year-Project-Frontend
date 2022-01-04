@@ -1,0 +1,15 @@
+.Login-with-google {
+  width: 100%;
+  overflow: hidden;
+  padding: 10px;
+  border-top: 2px solid #000000;
+}
+
+.btn {
+  background-color: orange;
+  border-radius: 5px;
+}
+.btn:hover {
+  border-color: orange;
+  color: #000000;
+}
