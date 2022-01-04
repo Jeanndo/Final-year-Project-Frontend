@@ -1,5 +1,8 @@
 import * as React from "react"
 import { useTheme } from "@mui/material/styles"
+import { makeStyles } from "@material-ui/core/styles"
+import Paper from "@material-ui/core/Paper"
+import Grid from "@material-ui/core/Grid"
 import {
   LineChart,
   Line,
@@ -29,10 +32,10 @@ const data = [
 
 export default function Chart() {
   const theme = useTheme()
-
+  const classes = useStyles()
   return (
     <React.Fragment>
-      <Title>Today</Title>
+      {/* <Title>Today</Title>
       <ResponsiveContainer>
         <LineChart
           data={data}
@@ -72,7 +75,32 @@ export default function Chart() {
             dot={false}
           />
         </LineChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer> */}
+      <div className={classes.root}>
+        <Grid container spacing={3}>
+          <Grid item xs={12}>
+            <Paper className={classes.paper}>xs=12</Paper>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          </Grid>
+          <Grid item xs={6} sm={3}>
+            <Paper className={classes.paper}>xs=6 sm=3</Paper>
+          </Grid>
+        </Grid>
+      </div>
     </React.Fragment>
   )
 }
