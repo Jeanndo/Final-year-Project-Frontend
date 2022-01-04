@@ -4,13 +4,14 @@ import Grid from "@material-ui/core/Grid"
 import Container from "@material-ui/core/Container"
 import MainFeaturedPost from "./MainFeaturedPost"
 import FeaturedPost from "./FeaturedPost"
+import Navigation from "./Navigator"
 
 const mainFeaturedPost = {
   title: "Title of a longer featured blog post",
   description:
     "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: "https://miro.medium.com/max/1400/1*f7m92eei7PE8gFyaCQnXMw.jpeg",
-  imgText: "main image description",
+  image:
+    "https://arrestyourdebt.com/wp-content/uploads/2020/05/bad-credit-loans-guaranteed-approval-1024x768.jpg",
 }
 
 const featuredPosts = [
@@ -47,14 +48,11 @@ export default function Blog() {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navigation />
       <Container maxWidth="lg">
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid
-            container
-            spacing={4}
-            style={{ marginTop: "20px", marginLeft: "40px" }}
-          >
+          <Grid container spacing={4} style={{ marginTop: "20px" }}>
             {featuredPosts.map((post) => (
               <FeaturedPost key={post.title} post={post} />
             ))}

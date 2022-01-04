@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react"
 import classes from "./ApplicantForm.module.css"
 import { Modal } from "antd"
+import Navigation from "./Navigator"
 
 const ApplicantForm = () => {
   const [isModalVisible, setIsModalVisible] = useState(false)
@@ -87,7 +88,7 @@ const ApplicantForm = () => {
   }
   return (
     <React.Fragment>
-      {/* <Navigation /> */}
+      <Navigation />
       <>
         <Modal
           title="Prediction Result"
