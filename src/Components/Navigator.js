@@ -82,7 +82,7 @@ const Navigator = ({ Siginout, logout }) => {
             onOk={handleOk1}
             onCancel={handleCancel1}
             footer={null}
-            width={700}
+            width={900}
           >
             <Login
               setUser={setUser}
@@ -96,16 +96,8 @@ const Navigator = ({ Siginout, logout }) => {
           <h1 className={classes.heading__primary}>Loan Approval Prediction</h1>
           <ul className={classes.lst}>
             <li>
-              <Link to="/"> Home </Link>
-            </li>
-            <li>
               <Link to="/home"> Form</Link>
             </li>
-            {user?.uid === "aKiGguRGexbZCurlQmwv5rVvR1s1" && (
-              <li>
-                <Link to="/batchprocessing"> Batch Processing </Link>
-              </li>
-            )}
             {user ? (
               <>
                 <li>

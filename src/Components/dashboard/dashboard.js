@@ -15,10 +15,16 @@ import Paper from "@mui/material/Paper"
 import MenuIcon from "@mui/icons-material/Menu"
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft"
 import SideBar from "./SideBar"
-import Avatar from "@mui/material/Avatar"
 import { useStyles } from "./style"
 import ApplicationForm from "./ApplicantForm"
-import Charts from "./index"
+import FileForm from "./FileForm"
+import BackGround from "./index"
+import AllAdmins from "./AllAdmins"
+import Resgister from "./Auth/Signup"
+import { connect } from "react-redux"
+import { useHistory, useLocation } from "react-router-dom"
+import { Logout as Siginout } from "../../Redux/actions/AuthAction"
+
 const drawerWidth = 240
 
 const AppBar = styled(MuiAppBar, {
@@ -67,14 +73,39 @@ const Drawer = styled(MuiDrawer, {
 
 const mdTheme = createTheme()
 
-const DashboardContent = () => {
+const DashboardContent = ({ Siginout, logout }) => {
   const classes = useStyles()
+  const history = useHistory()
+  const Location = useLocation()
   const [open, setOpen] = React.useState(true)
-  const [content, SetContent] = React.useState(<Charts />)
-
+  const [content, SetContent] = React.useState(<BackGround />)
+  const [isForm, setIsForm] = React.useState(false)
+  const [isCsv, setIsCsv] = React.useState(false)
+  const [isAddAdmin, setAddAdmin] = React.useState(false)
+  const [isAdmins, setIsAdmins] = React.useState(false)
+  const [user, setUser] = React.useState(
+    JSON.parse(localStorage.getItem("profile"))
+  )
   const toggleDrawer = () => {
     setOpen(!open)
   }
+  const handleLogout = async () => {
+    await Siginout()
+    localStorage.clear()
+    history.push("/")
+  }
+  React.useEffect(() => {
+    if (isForm) {
+      SetContent(<ApplicationForm />)
+    } else if (isCsv) {
+      SetContent(<FileForm />)
+    } else if (isAddAdmin) {
+      SetContent(<Resgister />)
+    } else if (isAdmins) {
+      SetContent(<AllAdmins />)
+    }
+    setUser(JSON.parse(localStorage.getItem("profile")))
+  }, [isForm, isCsv, isAddAdmin, Location, isAdmins])
 
   return (
     <ThemeProvider theme={mdTheme}>
@@ -108,12 +139,11 @@ const DashboardContent = () => {
             >
               DASHBOARD
             </Typography>
-            <Avatar
-              alt="adminProfile"
-              src="https://avatars.githubusercontent.com/u/59208992?v=4"
-            />
+            <Typography>{user?.email?.split("@")[0]}</Typography>
             &nbsp; &nbsp; &nbsp;
-            <button className={classes.logoutBtn}>Logout</button>
+            <button className={classes.logoutBtn} onClick={handleLogout}>
+              Logout
+            </button>
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -131,7 +161,13 @@ const DashboardContent = () => {
           </Toolbar>
           <Divider />
           <List>
-            <SideBar setOpen={setOpen} />
+            <SideBar
+              setOpen={setOpen}
+              setIsForm={setIsForm}
+              setIsCsv={setIsCsv}
+              setAddAdmin={setAddAdmin}
+              setIsAdmins={setIsAdmins}
+            />
           </List>
         </Drawer>
         <Box
@@ -157,7 +193,6 @@ const DashboardContent = () => {
                     // flexDirection: "column",
                   }}
                 >
-                  <ApplicationForm />
                   {content}
                 </Paper>
               </Grid>
@@ -168,7 +203,8 @@ const DashboardContent = () => {
     </ThemeProvider>
   )
 }
-
-export default function Dashboard() {
-  return <DashboardContent />
+const mapStateToProps = ({ LogoutReducer }) => {
+  const { logout } = { LogoutReducer }
+  return { logout }
 }
+export default connect(mapStateToProps, { Siginout })(DashboardContent)
