@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { message } from "antd"
 import "./Auth.css"
+import { Divider } from "antd"
 import { Login as signIn, GoogleLogin } from "../../Redux/actions/AuthAction"
 
 const layout = {
@@ -71,52 +72,71 @@ const LoginUser = ({
   console.log("googel user", google.message)
 
   return (
-    <Form
-      {...layout}
-      name="nest-messages"
-      onFinish={onFinish}
-      validateMessages={validateMessages}
-      style={{
-        padding: "20px",
-      }}
-    >
-      <Form.Item
-        name="email"
-        label="Email"
-        rules={[
-          {
-            type: "email",
-            required: true,
-          },
-        ]}
+    <div className="Login-container">
+      <Form
+        {...layout}
+        name="nest-messages"
+        onFinish={onFinish}
+        validateMessages={validateMessages}
+        style={{
+          padding: "20px",
+          width: "50%",
+        }}
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          name="email"
+          label="Email"
+          rules={[
+            {
+              type: "email",
+              required: true,
+            },
+          ]}
+          style={{ width: "600px" }}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        name="password"
-        label="Password"
-        rules={[
-          {
-            required: true,
-            message: "Please input your password!",
-          },
-        ]}
-      >
-        <Input.Password />
-      </Form.Item>
+        <Form.Item
+          name="password"
+          label="Password"
+          rules={[
+            {
+              required: true,
+              message: "Please input your password!",
+            },
+          ]}
+          style={{ width: "600px" }}
+        >
+          <Input.Password />
+        </Form.Item>
 
-      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-        <Button className="btn" htmlType="submit" loading={login.loading}>
-          Login
-        </Button>
-      </Form.Item>
-      <div className="Login-with-google">
-        <Button className="btn" onClick={handleGoogle} loading={google.loading}>
-          Google Login
-        </Button>
+        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+          <Button className="btn" htmlType="submit" loading={login.loading}>
+            Login
+          </Button>
+        </Form.Item>
+        <div
+          className="Login-with-google"
+          style={{ borderTop: "2px solid orange" }}
+        >
+          <Button
+            className="btn"
+            onClick={handleGoogle}
+            loading={google.loading}
+          >
+            Google Login
+          </Button>
+        </div>
+      </Form>
+      <div className="super-login">
+        <input type="email" placeholder="email" />
+        <input type="password" placeholder="email" />
+        <div>
+          <button className="superBtn">super Login</button>
+        </div>
       </div>
-    </Form>
+    </div>
   )
 }
 const mapStateToProps = ({ loginReducer, googleReducer }) => {

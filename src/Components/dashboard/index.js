@@ -1,10 +1,7 @@
 import React from "react"
 import { makeStyles } from "@material-ui/core/styles"
 import Grid from "@material-ui/core/Grid"
-import Chart1 from "./DashCharts"
-import Chart2 from "./Chart2"
-import Chart3 from "./Chart3"
-import Chart4 from "./Chart4"
+import "./dashboard.css"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,9 +20,7 @@ export default function FullWidthGrid() {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Chart1 />
-        </Grid>
+        <Grid item xs={12} className="dashboard "></Grid>
       </Grid>
     </div>
   )
