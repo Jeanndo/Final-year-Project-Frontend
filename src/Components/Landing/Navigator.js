@@ -97,57 +97,15 @@ const Navigator = ({ Siginout, logout }) => {
           <h1 className={classes.heading__primary}>Loan Approval Prediction</h1>
           <ul className={classes.lst}>
             <li>
-              <Link to="/home"> Form</Link>
+              <button className={classes.Logout} onClick={handleClick1}>
+                Login
+              </button>
             </li>
-            {user?.uid === "aKiGguRGexbZCurlQmwv5rVvR1s1" && (
-              <li>
-                <Link to="/batchprocessing"> Batch Processing </Link>
-              </li>
-            )}
-            {user ? (
-              <>
-                <li>
-                  {customAuth ? (
-                    <Avatar
-                      size={45}
-                      icon={<UserOutlined />}
-                      className={classes.avatar}
-                    />
-                  ) : (
-                    <Avatar
-                      size={45}
-                      src={user?.photoURL}
-                      className={classes.avatar}
-                    />
-                  )}
-                </li>
-                <li>
-                  <span>
-                    {customAuth
-                      ? user?.email?.split("@")[0]
-                      : user?.displayName?.split(" ")[0]}
-                  </span>
-                </li>
-                <li>
-                  <button className={classes.Logout} onClick={handleLogout}>
-                    Logout
-                  </button>
-                </li>
-              </>
-            ) : (
-              <>
-                <li>
-                  <button className={classes.Logout} onClick={handleClick1}>
-                    Login
-                  </button>
-                </li>
-                <li>
-                  <button className={classes.Logout} onClick={handleClick}>
-                    Sign up
-                  </button>
-                </li>
-              </>
-            )}
+            <li>
+              <button className={classes.Logout} onClick={handleClick}>
+                Sign up
+              </button>
+            </li>
           </ul>
         </nav>
       </div>
